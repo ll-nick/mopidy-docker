@@ -1,4 +1,4 @@
-ARG BUILD_FROM=debian:buster-slim
+ARG BUILD_FROM=balena:raspbian
 
 FROM $BUILD_FROM
 
@@ -28,29 +28,16 @@ RUN apt-get update \
                        libspotify-dev \
  && rm -rf /var/lib/apt/lists/*
 
-# Add git to get some Mopidy stuff straight from Github
-#RUN apt-get update \
-# && apt-get install -y git \
-# && rm -rf /var/lib/apt/lists/*
-
-COPY requirements.txt requirements.txt
-
-RUN pip3 install -r requirements.txt \
+RUN python3 -m pip install Mopidy Mopidy-Iris Mopidy-Spotify \
  && rm -rf ~/.cache/pip
 
 RUN update-ca-certificates --fresh
 
-COPY mopidy.conf /root/.config/mopidy/
-
-# https://discourse.mopidy.com/t/spotify-login-error-errortype-unable-to-contact-server-8/4979/19
+# https://discourse.mopidy.com/t/spotify-login-error-errortype-unable-to-contact-server-8/4$
 RUN echo "104.154.126.229 ap.spotify.com" >> /etc/hosts
 
-RUN mkdir /root/music
+ENV TZ=Europe/Berlin
 
-VOLUME ["/root/.cache/mopidy", "/root/.local/share/mopidy", "/root/music"]
-
-ENV TZ=Europe/London
-
-EXPOSE 6600 6680
+EXPOSE 6680
 
 ENTRYPOINT ["mopidy"]
