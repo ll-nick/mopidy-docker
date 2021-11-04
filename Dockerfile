@@ -28,7 +28,13 @@ RUN apt-get update \
                        libspotify-dev \
  && rm -rf /var/lib/apt/lists/*
 
-RUN python3 -m pip install Mopidy Mopidy-Iris Mopidy-Spotify \
+RUN python3 -m pip install \
+			Mopidy \
+			Mopidy-Iris \
+			Mopidy-Spotify \
+			Mopidy-Mobile \
+			Mopidy-MPD \
+			Mopidy-YouTube \
  && rm -rf ~/.cache/pip
 
 RUN update-ca-certificates --fresh
