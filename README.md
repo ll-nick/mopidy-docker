@@ -1,7 +1,6 @@
 ## !UNMAINTAINED!
 
-I forked this repo from [jjok](https://github.com/jjok/my-mopidy-setup). As of now this setup is working (check [my meta respository](https://github.com/ll-nick/jukebox-meta) for a docker-compose file)
-but I have since moved on to use librespot. It makes more sense for me personally since I only listen to music on spotify and this way control is more convenient.
+I forked this repo from [jjok](https://github.com/jjok/my-mopidy-setup). As of now this setup is working but I have since moved on to use librespot. It makes more sense for me personally since I only listen to music on spotify and this way control is more convenient.
 
 Anyway, I'm keeping this in case anyone needs some inspiration to get their mopdiy-snapcast setup up and running.
 
